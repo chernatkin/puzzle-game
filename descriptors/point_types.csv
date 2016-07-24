@@ -1,0 +1,5 @@
+empty, ,true,true
+tree,T,false,false
+vwall,|,false,false
+hwall,-,false,false
+fog,*,false,true
