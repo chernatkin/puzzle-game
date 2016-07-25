@@ -42,7 +42,7 @@ public class PlayerEmulator implements Runnable {
         CurrentMapVew view = engine.getCurrentView(person);
         
         while(alive && person.getHealth() > GameEngine.MIN_HEALTH_LEVEL){
-            Direction direction = getBestTarget(view.getVisiblePersons(), view.getCurrentPersonPoint());
+            Direction direction = getHumanTarget(view.getVisiblePersons(), view.getCurrentPersonPoint());
             if(direction != null) {
                 view = getOrDefault(engine.applyWeapon(person, direction, person.getCharacter().getWeapon()), view);
             }
@@ -68,17 +68,13 @@ public class PlayerEmulator implements Runnable {
         return DIRECTIONS[rand.nextInt(DIRECTIONS.length - 1)];
     }
 
-    private Direction getBestTarget(Map<Point2D, GamePerson> visiblePersons, Point2D currentPersonPoint){
-        if(visiblePersons.size() == 1){
-            return null;
-        }
-        
-        for(Point2D point : visiblePersons.keySet()){
-            if(currentPersonPoint.equals(point)){
-                continue;
-            }
+    private Direction getHumanTarget(Map<Point2D, GamePerson> visiblePersons, Point2D currentPersonPoint){
+        for(Map.Entry<Point2D, GamePerson> entry : visiblePersons.entrySet()){
+        	if(!entry.getValue().isBot()){
+        		continue;
+        	}
             
-            Direction direction = getDirectionIfAvailable(currentPersonPoint, point);
+            Direction direction = getDirectionIfAvailable(currentPersonPoint, entry.getKey());
             if(direction != null){
                 return direction;
             }
