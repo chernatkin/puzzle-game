@@ -1,1 +1,1 @@
-java -Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=9191,server=y,suspend=y -jar target\executable-puzzle-0.0.1-SNAPSHOT.jar
+java -jar target\executable-puzzle-0.0.1-SNAPSHOT.jar

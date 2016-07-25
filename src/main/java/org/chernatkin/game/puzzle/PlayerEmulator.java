@@ -70,7 +70,7 @@ public class PlayerEmulator implements Runnable {
 
     private Direction getHumanTarget(Map<Point2D, GamePerson> visiblePersons, Point2D currentPersonPoint){
         for(Map.Entry<Point2D, GamePerson> entry : visiblePersons.entrySet()){
-        	if(!entry.getValue().isBot()){
+        	if(entry.getValue().isBot()){
         		continue;
         	}
             

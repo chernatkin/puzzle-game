@@ -128,7 +128,7 @@ public class GameEngine {
     }
 
     public synchronized Map<GamePerson, Point2D> getPersons() {
-        return persons;
+        return new HashMap<>(persons);
     }
     
     public String getMapName(){

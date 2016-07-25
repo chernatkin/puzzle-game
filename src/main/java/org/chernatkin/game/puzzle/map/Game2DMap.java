@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Game2DMap {
 
-    private static final int MAX_VISIBLE_DISTANCE = 20; 
+    private static final int MAX_VISIBLE_DISTANCE = 10; 
     
     private final String name;
     
@@ -36,7 +36,7 @@ public class Game2DMap {
         int toX = Math.min(standPoint.getX() + MAX_VISIBLE_DISTANCE, xSize - 1);
         int toY = Math.min(standPoint.getY() + MAX_VISIBLE_DISTANCE, ySize - 1);
         
-        Point2D[][] visibleMap = new Point2D[toY - fromY + 2][toX - fromX + 2];
+        Point2D[][] visibleMap = new Point2D[toY - fromY + 1][toX - fromX + 1];
         
         for(int i = fromY; i <= toY; i++){
             for(int j = fromX; j <= toX; j++){

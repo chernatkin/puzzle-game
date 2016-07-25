@@ -19,15 +19,15 @@ import org.chernatkin.game.puzzle.map.PointType;
 
 public class GameLoader {
     
-    private static final String WEAPONS_FILE_PATH = Paths.get("descriptors", "weapons.csv").toString();
+    private static String WEAPONS_FILE_PATH = Paths.get("descriptors", "weapons.csv").toString();
     
-    private static final String CHARACTERS_FILE_PATH = Paths.get("descriptors", "characters.csv").toString();
+    private static String CHARACTERS_FILE_PATH = Paths.get("descriptors", "characters.csv").toString();
     
-    private static final String POINT_TYPES_FILE_PATH = Paths.get("descriptors", "point_types.csv").toString();
+    private static String POINT_TYPES_FILE_PATH = Paths.get("descriptors", "point_types.csv").toString();
     
-    private static final String MAPS_FILE_PATH = Paths.get("descriptors", "maps").toString();
+    private static String MAPS_FILE_PATH = Paths.get("descriptors", "maps").toString();
     
-    private static final String GAMES_FILE_PATH = Paths.get("descriptors", "games").toString();
+    private static String GAMES_FILE_PATH = Paths.get("descriptors", "games").toString();
     
     private static final DateFormat GAME_STATE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss");
     
