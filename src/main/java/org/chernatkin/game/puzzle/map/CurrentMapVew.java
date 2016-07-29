@@ -6,23 +6,23 @@ import org.chernatkin.game.puzzle.character.GamePerson;
 
 public class CurrentMapVew {
     
-    private Point2D[][] visibleMap;
+    private Array2D<Point2D> visibleMap;
     
     private Map<Point2D, GamePerson> visiblePersons;
     
     private Point2D currentPersonPoint;
 
-    public CurrentMapVew(Point2D[][] visibleMap, Map<Point2D, GamePerson> visiblePersons, Point2D currentPersonPoint) {
+    public CurrentMapVew(Array2D<Point2D> visibleMap, Map<Point2D, GamePerson> visiblePersons, Point2D currentPersonPoint) {
         this.visibleMap = visibleMap;
         this.visiblePersons = visiblePersons;
         this.currentPersonPoint = currentPersonPoint;
     }
 
-    public Point2D[][] getVisibleMap() {
+    public Array2D<Point2D> getVisibleMap() {
         return visibleMap;
     }
 
-    public void setVisibleMap(Point2D[][] visibleMap) {
+    public void setVisibleMap(Array2D<Point2D> visibleMap) {
         this.visibleMap = visibleMap;
     }
 

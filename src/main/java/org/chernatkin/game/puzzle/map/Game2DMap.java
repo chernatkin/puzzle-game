@@ -28,7 +28,7 @@ public class Game2DMap {
         }
     }
     
-    public Point2D[][] getVisibleMap(Point2D standPoint){
+    public Array2D<Point2D> getVisibleMap(Point2D standPoint){
         
         int fromX = Math.max(standPoint.getX() - MAX_VISIBLE_DISTANCE, 0);
         int fromY = Math.max(standPoint.getY() - MAX_VISIBLE_DISTANCE, 0);
@@ -36,15 +36,7 @@ public class Game2DMap {
         int toX = Math.min(standPoint.getX() + MAX_VISIBLE_DISTANCE, xSize - 1);
         int toY = Math.min(standPoint.getY() + MAX_VISIBLE_DISTANCE, ySize - 1);
         
-        Point2D[][] visibleMap = new Point2D[toY - fromY + 1][toX - fromX + 1];
-        
-        for(int i = fromY; i <= toY; i++){
-            for(int j = fromX; j <= toX; j++){
-                visibleMap[i - fromY][j - fromX] = map[i][j];
-            }
-        }
-        
-        return visibleMap;
+        return new Array2D<Point2D>(map, fromY, toY, fromX, toX);
     }
     
     protected Point2D getPoint(Point2D srcPoint, Direction direction){

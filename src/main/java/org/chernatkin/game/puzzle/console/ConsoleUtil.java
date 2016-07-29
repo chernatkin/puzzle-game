@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import org.chernatkin.game.puzzle.character.GamePerson;
+import org.chernatkin.game.puzzle.map.Array2D;
 import org.chernatkin.game.puzzle.map.CurrentMapVew;
 import org.chernatkin.game.puzzle.map.Direction;
 import org.chernatkin.game.puzzle.map.Point2D;
@@ -41,13 +42,12 @@ public class ConsoleUtil {
         }
         PrintWriter pw = console.writer();
         
-        Point2D[][] map = view.getVisibleMap();
+        Array2D<Point2D> map = view.getVisibleMap();
         GamePerson human = view.getVisiblePersons().get(view.getCurrentPersonPoint());
         
-        for(int i = map.length - 1; i >= 0; i--){
-            Point2D[] row = map[i];
-            for(int j = 0; j < row.length; j++){
-                Point2D p = row[j];
+        for(int i = map.lengthY() - 1; i >= 0; i--){
+            for(int j = 0; j < map.lengthX(); j++){
+                Point2D p = map.load(j, i);
                 if(p == null){
                     pw.append("~");
                     continue;

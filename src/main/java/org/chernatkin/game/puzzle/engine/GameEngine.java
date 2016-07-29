@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.chernatkin.game.puzzle.character.GamePerson;
 import org.chernatkin.game.puzzle.character.Weapon;
+import org.chernatkin.game.puzzle.map.Array2D;
 import org.chernatkin.game.puzzle.map.CurrentMapVew;
 import org.chernatkin.game.puzzle.map.Direction;
 import org.chernatkin.game.puzzle.map.Game2DMap;
@@ -56,16 +57,13 @@ public class GameEngine {
             throw new GameOverException("All enemy killed. You win!");
         }
         
-        final Point2D[][] visiblePoints = currentPoint == null ? null : map.getVisibleMap(currentPoint);
+        final Array2D<Point2D> visiblePoints = currentPoint == null ? null : map.getVisibleMap(currentPoint);
         
         Map<Point2D, GamePerson> visiblePersons = new HashMap<>(occupiedPoints.size());
         
-        for(int i = 0; i < visiblePoints.length; i++){
-            Point2D[] rowPoints = visiblePoints[i];
-            for(int j = 0; j < rowPoints.length; j++){
-                if(occupiedPoints.containsKey(rowPoints[j])){
-                    visiblePersons.put(rowPoints[j], occupiedPoints.get(rowPoints[j]));
-                }
+        for(Point2D occupiedPoint : occupiedPoints.keySet()){
+            if(visiblePoints.isGlobalCoordinateBelongArray(occupiedPoint.getX(), occupiedPoint.getY())){
+                visiblePersons.put(occupiedPoint, occupiedPoints.get(occupiedPoint));
             }
         }
         
